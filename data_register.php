@@ -1,10 +1,25 @@
 <?php
     session_start();
 
+    $server="localhost";
+    $username="Vit";
+    $password="94826401";
+    $database="site_db";
+
+    try {
+        $conn=new mysqli($server, $username, $password, $database);
+    }
+    catch(Exception)
+    {
+        $_SESSION["error_message"]="Connection not established";
+        header("Location:index.php");
+        die();
+    }    
+
 if($_SERVER["REQUEST_METHOD"]==="POST"){
     $firstname=htmlspecialchars(trim($_POST["firstname"]));
     $lastname=htmlspecialchars(trim($_POST["lastname"]));
-    $email=htmlspecialchars(filter_var(trim($_POST["email"])));
+    $email=htmlspecialchars(filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL));
     $phone=htmlspecialchars(trim($_POST["phone"]));
     $password=trim($_POST["password"]);
     $confirmPassword=trim($_POST["confirmPassword"]);
@@ -52,14 +67,19 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
     }
 
     $_SESSION["success_message"]="Регистрация прошла успешно.";
-    $_SESSION["success_message1"]="Теперь Вы можете войти";
+    $_SESSION["success_message1"]="Теперь Вы можете войти.";
     header("Location: login.php");
     exit();
 }
+else
+{
+    header("Location:register.php");
+}
 
+function insertUser()
+{
 
-
-
+}
 ?>
 
 

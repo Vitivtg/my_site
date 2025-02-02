@@ -14,7 +14,7 @@ session_start();
     </style>
 </head>
 <body>
-    <form action="data.php" method="POST" autocomplete="off">
+    <form action="data_register.php" method="POST" autocomplete="off">
         <div>
             <h3>Регистрация</h3>
         <input type="text" name="firstname" placeholder="Имя" required>

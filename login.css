@@ -112,3 +112,18 @@ form button:hover {
     width: 300px;
     position: relative;
 }
+
+.error {
+    font-size: small;
+    color: red;
+    text-align: center; 
+    width: 100%;   
+    padding: 0;
+    background-color:white;
+    border-radius: 5px;    
+    margin-bottom: 10px; /* Отступы между полями */
+    border: 1px solid #ccc; /* Обводка полей */
+    border-radius: 5px; /* Закругленные углы полей */
+    box-sizing: border-box; /* Учитываем padding в ширине */
+    margin-top: 10px;
+}
