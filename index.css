@@ -1,0 +1,64 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Высота на весь экран */
+}
+
+body {
+    background-image: url('./image/fon.jpg');
+    background-size: cover; /* Растянуть, сохраняя пропорции */
+    background-position: center; /* Центрируем картинку */
+    background-repeat: no-repeat; /* Убираем повтор */
+}
+
+.head{
+    background-color: rgb(67, 183, 215);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    gap: 20px;   
+    position: fixed; 
+    top: 0;
+    list-style: none;    
+}
+
+.head a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-family: Georgia, serif;
+}
+
+.head li:last-child {
+    margin-left: auto;
+    padding-right: 80px;
+}
+
+.head a:hover {
+    color: #094c94;
+}
+
+footer{       
+    height: 50px;
+    width: 100%;     
+    gap: 20px;
+    display: flex;
+    background-color: rgb(125, 129, 130);
+    justify-content: center;
+}
+
+.content { 
+    margin-top: 60px;
+    width: 100%;
+    height: 100%;
+}
+
+.headPhoto{
+    position: absolute;
+    top: 200px;
+    left: 900px;
+    height: 400px;
+    width: auto;
+}

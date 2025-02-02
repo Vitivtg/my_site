@@ -1,0 +1,114 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-image: url('./image/ozero.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;     
+    margin: 0; /* Убираем отступы */
+    height: 65vh; /* Высота равна 100% экрана */
+    display: flex; /* Включаем Flexbox */
+    justify-content: center; /* Горизонтальная центровка */        
+    font-family: Arial, sans-serif; /* Шрифт (по желанию) */  
+    align-items: center;  
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Высота 100% экрана */
+    width: 100%;
+    position: relative; /* Для абсолютного позиционирования сообщений */
+}
+
+form {    
+    padding: 20px; /* Внутренние отступы */
+    border-radius: 10px; /* Закругленные углы */    
+    width: 250px; /* Ширина формы */  
+    justify-content: center;  
+}
+
+form h3{
+    text-align: center;
+}
+
+form input {
+    width: 100%; /* Ширина инпутов на 100% от формы */
+    padding: 10px; /* Внутренние отступы */
+    margin-bottom: 10px; /* Отступы между полями */
+    border: 1px solid #ccc; /* Обводка полей */
+    border-radius: 5px; /* Закругленные углы полей */
+    box-sizing: border-box; /* Учитываем padding в ширине */
+}
+
+form button {
+    width: 100%; /* Ширина кнопки */
+    padding: 10px; /* Внутренние отступы */
+    background: #007BFF; /* Цвет кнопки */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Указатель мыши при наведении */
+}
+
+form button:hover {
+    background: #0056b3; /* Цвет кнопки при наведении */
+}
+
+.haveAcc{
+    margin-top: 10px;
+    display:flex;
+    font-size: small;
+    align-items: center; /* Центруем элементы по вертикали */
+    gap: 20px; /* Расстояние между p и a */
+    justify-content: center;
+}
+
+.haveAcc p {
+    margin: 0; /* Убираем стандартные отступы */
+    color: white;
+}
+
+.haveAcc a {    
+    text-decoration: none; /* Убираем подчеркивание */
+    font-weight: bold; /* Делаем текст ссылки жирным */
+    color: white;
+    cursor: pointer;
+}
+
+.haveAcc a:hover{
+    color: hsla(75, 89%, 52%, 0.905);
+}
+
+.success{
+    color: rgb(12, 233, 12);
+    padding: 10px;
+    text-align: center;    
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 10;
+    justify-content: center;
+    font-size: xx-large;
+    font-weight: bold;    
+}
+
+.form-container p{
+    padding: 0;
+    margin: 0;
+}
+
+.form{    
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    position: relative;
+}

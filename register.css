@@ -1,0 +1,92 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-image: url('./image/ozero.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;     
+    margin: 0; /* Убираем отступы */
+    height: 55vh; /* Высота равна 100% экрана */
+    display: flex; /* Включаем Flexbox */
+    justify-content: center; /* Горизонтальная центровка */     
+    font-family: Arial, sans-serif; /* Шрифт (по желанию) */
+    
+}
+
+form {    
+    padding: 20px; /* Внутренние отступы */
+    border-radius: 10px; /* Закругленные углы */    
+    width: 250px; /* Ширина формы */
+    
+}
+
+form h3{
+    text-align: center;
+}
+
+form input {
+    width: 100%; /* Ширина инпутов на 100% от формы */
+    padding: 10px; /* Внутренние отступы */
+    margin-bottom: 10px; /* Отступы между полями */
+    border: 1px solid #ccc; /* Обводка полей */
+    border-radius: 5px; /* Закругленные углы полей */
+    box-sizing: border-box; /* Учитываем padding в ширине */
+}
+
+form button {
+    width: 100%; /* Ширина кнопки */
+    padding: 10px; /* Внутренние отступы */
+    background: #007BFF; /* Цвет кнопки */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Указатель мыши при наведении */
+}
+
+form button:hover {
+    background: #0056b3; /* Цвет кнопки при наведении */
+}
+
+.optionGender{
+    display:inline-flex;
+    font-size: small;
+    flex-direction: row;     
+    text-align: center; /* Центровка текста */
+    margin-left:30px;    
+}
+
+.haveAcc{
+    margin-top: 10px;
+    display:flex;
+    font-size: small;
+    align-items: center; /* Центруем элементы по вертикали */
+    gap: 20px; /* Расстояние между p и a */
+    justify-content: center;
+}
+
+.haveAcc p {
+    margin: 0; /* Убираем стандартные отступы */
+    color: white;
+}
+
+.haveAcc a {    
+    text-decoration: none; /* Убираем подчеркивание */
+    font-weight: bold; /* Делаем текст ссылки жирным */
+    color: white;
+    cursor: pointer;
+}
+
+.haveAcc a:hover{
+    color: hsla(75, 89%, 52%, 0.905);
+}
+
+.error {
+    font-size: small;
+    color: red;
+    text-align: center;
+}
+
