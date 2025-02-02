@@ -34,8 +34,8 @@
         <div class="form">
             <form action="">
                 <h3>Вход</h3>        
-                <input type="email" placeholder="Email">        
-                <input type="password" placeholder="пароль">        
+                <input type="email" placeholder="Email" required>        
+                <input type="password" placeholder="пароль" required>        
                 <button type="submit">Вход</button>
                 <div class="haveAcc">
                     <p>нет аккаунта?</p>

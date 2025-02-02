@@ -17,7 +17,7 @@ session_start();
     <form action="data.php" method="POST" autocomplete="off">
         <div>
             <h3>Регистрация</h3>
-        <input type="text" name="firstname" placeholder="Имя" >
+        <input type="text" name="firstname" placeholder="Имя" required>
         <?php
             if(isset($_SESSION["error_name"]))
             {
@@ -27,7 +27,7 @@ session_start();
                 unset($_SESSION["error_name"]);
             }
         ?>
-        <input type="text"  name="lastname"placeholder="Фамилия" >
+        <input type="text"  name="lastname"placeholder="Фамилия" required>
         <?php
         if(isset($_SESSION["error_lastname"]))
             {
@@ -43,9 +43,9 @@ session_start();
         </div>
         <div class="optionGender">
         <label for="female" style="color: white;">Женщина</label>
-        <input type="radio" id="female" name="gender" value="female" >        
+        <input type="radio" id="female" name="gender" value="female" required>        
         </div>
-        <input type="email" name="email" placeholder="Email" >
+        <input type="email" name="email" placeholder="Email" required>
         <?php
         if(isset($_SESSION["error_email"]))
             {
@@ -55,7 +55,7 @@ session_start();
                 unset($_SESSION["error_email"]);
             }
         ?>
-        <input type="tel" id="numberPhone" name="phone" placeholder="Телефон" >
+        <input type="tel" id="numberPhone" name="phone" placeholder="Телефон в формате +..." required>
         <script>
             document.getElementById("numberPhone").addEventListener("input", function()
         {
@@ -74,7 +74,7 @@ session_start();
                 unset($_SESSION["error_phone"]);
             }
         ?>
-        <input type="password"  name="password" placeholder="пароль" >
+        <input type="password"  name="password" placeholder="пароль" required>
         <?php
         if(isset($_SESSION["error_password"]))
             {
