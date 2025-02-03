@@ -1,20 +1,7 @@
 <?php
-    session_start();
+    require_once "config.php";
 
-    $server="localhost";
-    $username="Vit";
-    $password="94826401";
-    $database="site_db";
-
-    try {
-        $conn=new mysqli($server, $username, $password, $database);
-    }
-    catch(Exception)
-    {
-        $_SESSION["error_message"]="Connection not established";
-        header("Location:index.php");
-        die();
-    }    
+    session_start();      
 
 if($_SERVER["REQUEST_METHOD"]==="POST"){
     $firstname=htmlspecialchars(trim($_POST["firstname"]));
@@ -22,7 +9,11 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
     $email=htmlspecialchars(filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL));
     $phone=htmlspecialchars(trim($_POST["phone"]));
     $password=trim($_POST["password"]);
-    $confirmPassword=trim($_POST["confirmPassword"]);
+    $confirmPassword=trim($_POST["confirmPassword"]); 
+
+    if (isset($_POST['gender'])) {
+        $gender = $_POST['gender']; // Получаем значение (male или female)
+    }   
 
     if (!preg_match("/^[a-zA-Zа-яА-ЯёЁ\s]+$/u", $firstname))
     {
@@ -66,6 +57,10 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
         exit();
     }
 
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    insertUser($conn, $firstname, $lastname, $gender, $email, $phone, $password);
+
     $_SESSION["success_message"]="Регистрация прошла успешно.";
     $_SESSION["success_message1"]="Теперь Вы можете войти.";
     header("Location: login.php");
@@ -76,9 +71,12 @@ else
     header("Location:register.php");
 }
 
-function insertUser()
+function insertUser($conn, $firstname, $lastname, $gender, $email, $phone, $password)
 {
-
+    $stmt=$conn->prepare("INSERT INTO users(firstname, lastname, gender,  email, phone, password) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $firstname, $lastname, $gender, $email, $phone, $password);
+    $stmt->execute();
+    $stmt->close();
 }
 ?>
 

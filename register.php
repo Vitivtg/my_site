@@ -92,7 +92,17 @@ session_start();
                 <p>$_SESSION[error_confirmPassword]</p>
                 </div>";
                 unset($_SESSION["error_confirmPassword"]);
+
+                
             }
+        
+        if(isset($_SESSION["error_message"]))
+        {
+            echo "<div class='error'>
+                <p>$_SESSION[error_message]</p>
+                </div>";
+                unset($_SESSION["error_message"]);
+        }
         ?>
         <button type="submit">Регистрация</button>
         <div class="haveAcc">
