@@ -7,7 +7,7 @@ session_start();
             throw new Exception("Connection failed: " . $conn->connect_error);
         }
     }
-    catch(Exception)
+    catch(Exception $e)
     {
         $_SESSION["error_message"]="Connection not established";
         header("Location:register.php");

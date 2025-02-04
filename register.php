@@ -27,7 +27,7 @@ session_start();
                 unset($_SESSION["error_name"]);
             }
         ?>
-        <input type="text"  name="lastname"placeholder="Фамилия" required>
+        <input type="text"  name="lastname"placeholder="Фамилия">
         <?php
         if(isset($_SESSION["error_lastname"]))
             {
@@ -55,7 +55,7 @@ session_start();
                 unset($_SESSION["error_email"]);
             }
         ?>
-        <input type="tel" id="numberPhone" name="phone" placeholder="Телефон в формате +..." required>
+        <input type="tel" id="numberPhone" name="phone" placeholder="Телефон в формате +373...">
         <script>
             document.getElementById("numberPhone").addEventListener("input", function()
         {

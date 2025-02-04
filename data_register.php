@@ -22,12 +22,12 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
         exit();
     }
 
-    if (!preg_match("/^[a-zA-Zа-яА-ЯёЁ\s]+$/u", $lastname))
+    /*if (!preg_match("/^[a-zA-Zа-яА-ЯёЁ\s]+$/u", $lastname))
     {
         $_SESSION["error_lastname"]="Фамилия должна содержать только буквы.";
         header("Location:register.php");
         exit();
-    }
+    }*/
 
     if (!preg_match("/^[a-zA-Z0-9]+[a-zA-Z0-9._-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email))
     {
@@ -36,12 +36,12 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
         exit();
     }
 
-    if (!preg_match("/^\+\d{10,14}$/", $phone))
+    /*if (!preg_match("/^\+\d{10,14}$/", $phone))
     {
         $_SESSION["error_phone"]="Телефон должен содержать + и не менее 10 цифр";
         header("Location:register.php");
         exit();
-    }
+    }*/
 
     if (!preg_match("/^(?=.*[A-Z])(?=.*\d).{8,}$/", $password))
     {
