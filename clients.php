@@ -18,7 +18,13 @@ $result=$stmt->get_result();
     <div class="clients">
         <?php
             while($row=$result->fetch_assoc()){
-                
+                echo "<div class='client'>
+                    <h3>$row[firstname]</h3>
+                    <h3>$row[lastname]</h3>
+                    <h3>$row[gender]</h3>
+                    <h3>$row[email]</h3>
+                    <h3>$row[phone]</h3>                    
+                </div>";
             }
         ?>
     </div>
