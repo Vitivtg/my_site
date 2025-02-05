@@ -12,6 +12,11 @@ $result=$stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clients</title>
+    <style>
+        <?php
+            include"clients.css"
+        ?>
+    </style>
 </head>
 <body>
     <h1>Clients</h1>
@@ -26,6 +31,7 @@ $result=$stmt->get_result();
                     <h3>$row[phone]</h3>                    
                 </div>";
             }
+            $stmt->close();
         ?>
     </div>
 </body>
