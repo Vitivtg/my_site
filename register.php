@@ -39,11 +39,11 @@ session_start();
         ?>
         <div class="optionGender">
         <label for="male" style="color: white;">Мужчина</label>
-        <input type="radio" id="male" name="gender" value="male">        
+        <input type="radio" id="male" name="gender" value="мужчина">        
         </div>
         <div class="optionGender">
         <label for="female" style="color: white;">Женщина</label>
-        <input type="radio" id="female" name="gender" value="female" required>        
+        <input type="radio" id="female" name="gender" value="женщина" required>        
         </div>
         <input type="email" name="email" placeholder="Email" required>
         <?php
