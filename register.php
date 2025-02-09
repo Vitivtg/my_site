@@ -38,11 +38,11 @@ session_start();
             }
         ?>
         <div class="optionGender">
-        <label for="male" style="color: white;">Мужчина</label>
+        <label for="male" >Мужчина</label>
         <input type="radio" id="male" name="gender" value="мужчина">        
         </div>
         <div class="optionGender">
-        <label for="female" style="color: white;">Женщина</label>
+        <label for="female" >Женщина</label>
         <input type="radio" id="female" name="gender" value="женщина" required>        
         </div>
         <input type="email" name="email" placeholder="Email" required>
