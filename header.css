@@ -1,0 +1,44 @@
+html, body {
+    margin: 0;
+    padding: 0;    
+}
+
+.head{
+    background-color: rgb(67, 183, 215);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    gap: 20px;   
+    position: fixed; 
+    top: 0;
+    list-style: none;
+}
+
+.head a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-family: Georgia, serif;
+}
+
+.head li:last-child {
+    margin-left: auto;
+    padding-right: 80px;
+}
+
+.head a:hover {
+    color: #094c94;
+}
+
+@media (max-width: 768px) {
+    .head {
+        flex-direction: column; /* Элементы хедера будут располагаться в колонку на малых экранах */
+        
+    }     
+
+    .head a {
+        font-size: 12px; /* Уменьшаем размер шрифта на маленьких экранах */
+    }
+}

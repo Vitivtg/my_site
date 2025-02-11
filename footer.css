@@ -1,0 +1,19 @@
+html, body {
+    margin: 0;
+    padding: 0; 
+    height: 100%;
+    display: flex;  
+    flex-direction: column;  
+}
+
+footer{ 
+    height: 50px;
+    width: 100%;    
+    display: flex;
+    background-color: rgb(125, 129, 130);
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    
+    
+}

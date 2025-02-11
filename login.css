@@ -9,6 +9,7 @@ body{
     font-family: Arial, sans-serif; /* Шрифт (по желанию) */
     background-color: rgb(208, 208, 204);
     display: flex; /* Включаем Flexbox */
+    align-items: center;  
     margin-top: -200px;
 }
 

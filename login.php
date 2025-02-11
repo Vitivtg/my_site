@@ -1,9 +1,9 @@
-<?php
+<?php 
  session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
 </head>
 <body>
     <?php
-    if (isset($_SESSION["success_message"]) || isset($_SESSION["success_message1"])) {
+    /*if (isset($_SESSION["success_message"]) || isset($_SESSION["success_message1"])) {
         echo "<div class='success'>";
         if (isset($_SESSION["success_message"])) {
             echo "<p>" . htmlspecialchars($_SESSION["success_message"]) . "</p>";
@@ -27,36 +27,31 @@
             unset($_SESSION["success_message1"]);
         }
         echo "</div>";
-    }
+    }*/
     ?>
 
     <div class="form-container">
-        <div class="form">
+        <div class="form">            
             <form action="data_login.php" method="POST">
                 <h3>Вход</h3>        
                 <input type="email" name="email" placeholder="Email" >        
                 <input type="password" name="password" placeholder="пароль" >        
                 <button type="submit">Вход</button>
                 <?php
-                    if(isset($_SESSION["error_message"]))
-                    {
+                    if (isset($_SESSION["error_message"])) {
                         echo "<div class='error'>";
-                        if (isset($_SESSION["error_message"])) {
-                            echo "<p>" . htmlspecialchars($_SESSION["error_message"]) . "</p>";
-                            unset($_SESSION["error_message"]);
-                        }        
+                        echo "<p>" . htmlspecialchars($_SESSION["error_message"]) . "</p>";
+                        unset($_SESSION["error_message"]);
                         echo "</div>";
                     }
-                    ?>
+                ?>
                 <div class="haveAcc">
                     <p>нет аккаунта?</p>
                     <a href="register.php">Регистрация</a>   
                 </div>
-            </form>
+            </form>            
         </div>
-    </div>
-
-    
+    </div>    
 </body>
 
 </html>
