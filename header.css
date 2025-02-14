@@ -23,9 +23,22 @@ html, body {
     font-family: Georgia, serif;
 }
 
-.head li:last-child {
+.head li1:last-child1 {
     margin-left: auto;
-    padding-right: 80px;
+    padding-right: 80px;  
+    color: white; 
+    font-weight: bold;
+    font-family: Georgia, serif;    
+}
+.last_li{
+    gap: 20px;
+    margin-left: auto;
+    padding-right: 80px;  
+    color: white; 
+    font-weight: bold;
+    font-family: Georgia, serif;  
+    display: flex;    
+    align-items: center;
 }
 
 .head a:hover {
@@ -34,11 +47,10 @@ html, body {
 
 @media (max-width: 768px) {
     .head {
-        flex-direction: column; /* Элементы хедера будут располагаться в колонку на малых экранах */
-        
+        flex-direction: column;         
     }     
 
     .head a {
-        font-size: 12px; /* Уменьшаем размер шрифта на маленьких экранах */
+        font-size: 12px; 
     }
 }

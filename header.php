@@ -13,8 +13,15 @@
         <li><a href="">Обо мне</a></li>
         <li><a href="">Вебинары</a></li>
         <li><a href="">Тренинги</a></li>
-        <li><a href="">Консультации</a></li>
-        <li><a href="login.php">Войти</a></li>
+        <li><a href="consultation.php">Консультации</a></li>
+        <li class="last_li">
+            <?php if(isset($_SESSION["user_name"])): ?>
+                <p>Привет, <a href=""><?=htmlspecialchars($_SESSION["user_name"]) ?></a></p>
+                <a href="logout.php">Выйти</a>
+                <?php else: ?>
+                <a href="login.php">Войти</a>
+                <?php endif; ?>
+        </li>
         </nav>         
     </header>    
 </body>

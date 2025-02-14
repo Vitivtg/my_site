@@ -35,16 +35,9 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-    <header>
-        <nav class="head">
-            <li><a href="index.php">Главная</a></li>
-            <li><a href="">Обо мне</a></li>
-            <li><a href="">Вебинары</a></li>
-            <li><a href="">Тренинги</a></li>
-            <li><a href="">Консультации</a></li>
-            <li><a href="login.php">Войти</a></li>
-        </nav>
-    </header>
+    <?php
+        require_once "header.php";
+    ?>
 
     <h1>Клиент</h1>
     <div class="clients">
@@ -85,9 +78,9 @@ if (isset($_GET['id'])) {
         <a class="a1" href="clients.php">назад к списку клиентов</a>
     </div>
 
-    <footer>
-        <p>Сайт лучшего психолога мира... Да чего там мира-ПМР!!!</p>
-    </footer>
+    <?php
+        require_once"footer.php";
+    ?>
 </body>
 
 </html>
