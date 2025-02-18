@@ -31,7 +31,17 @@
     ?>
 
     <div class="form-container">
-        <div class="form">            
+        <div class="form">  
+        <?php
+                    if (isset($_SESSION["success_message"])&&isset($_SESSION["success_message1"])) {
+                        echo "<div class='success'>";
+                        echo "<p>" . htmlspecialchars($_SESSION["success_message"]) . "</p>";
+                        echo "<p>" . htmlspecialchars($_SESSION["success_message1"]) . "</p>";
+                        unset($_SESSION["success_message"]);
+                        unset($_SESSION["success_message1"]);
+                        echo "</div>";
+                    }
+                ?>          
             <form action="data_login.php" method="POST">
                 <h3>Вход</h3>        
                 <input type="email" name="email" placeholder="Email" >        
@@ -43,7 +53,7 @@
                         echo "<p>" . htmlspecialchars($_SESSION["error_message"]) . "</p>";
                         unset($_SESSION["error_message"]);
                         echo "</div>";
-                    }
+                    }                    
                 ?>
                 <div class="haveAcc">
                     <p>нет аккаунта?</p>

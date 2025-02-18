@@ -1,28 +1,40 @@
 <?php
-require_once 'config.php';
+require_once "config.php";
 
-// Получаем выбранную дату
-$date = $_GET['date'] ?? '';
+date_default_timezone_set('Europe/Chisinau'); // Устанавливаем часовой пояс Кишинёва
 
-if ($date) {
-    // Запрос на выбор данных с учетом даты и фильтрации timeFree = 1
-    $stmt = $conn->prepare("SELECT timeSession FROM sessiontime WHERE date = ? AND timeFree = 1");
-    $stmt->bind_param("s", $date); // Привязываем выбранную дату как строку
+if (isset($_GET['date'])) {
+    $selectedDate = $_GET['date']; // Получаем выбранную дату из запроса
+    $currentTime = date("H:i"); // Текущее время в формате HH:mm
+
+    // Запрос для получения всех доступных временных слотов, которые еще свободны
+    $stmt = $conn->prepare("
+        SELECT timeSession FROM sessionTime 
+        WHERE timeFree = 1 
+        AND timeSession NOT IN (
+            SELECT s.timeSession FROM record r
+            JOIN sessionTime s ON r.time_id = s.id
+            WHERE r.data = ?
+        )
+    ");
+    $stmt->bind_param("s", $selectedDate);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Формируем массив сессий
-    $sessions = [];
+    $availableTimes = [];
     while ($row = $result->fetch_assoc()) {
-        $sessions[] = $row['timeSession'];
+        $time = $row['timeSession'];
+
+        // Если выбранная дата — сегодня, фильтруем по текущему времени
+        if ($selectedDate > date("Y-m-d") || $time >= $currentTime) {
+            $availableTimes[] = $time;
+        }
     }
 
-    // Возвращаем данные в формате JSON
-    header('Content-Type: application/json');
-    echo json_encode($sessions);
-} else {
-    // Если дата не указана, возвращаем пустой массив
-    header('Content-Type: application/json');
-    echo json_encode([]);
+    error_log("Выбранная дата: " . $selectedDate);
+error_log("Текущее время: " . $currentTime);
+error_log("Доступные записи: " . print_r($availableTimes, true));
+
+    echo json_encode($availableTimes);
 }
 ?>

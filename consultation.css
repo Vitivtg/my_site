@@ -1,0 +1,104 @@
+html,body{
+    background-color: rgb(222, 205, 205);    
+    margin: 0;    
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.calendar {
+    max-width: 400px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    
+}
+
+.calendar-header {
+    background: skyblue;
+    padding: 10px;
+    font-size: 20px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    position: relative;    
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: hsl(120, 16%, 89%);
+}
+
+.day {
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.inactive {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.today {
+    background: #ffc107;
+    font-weight: bold;
+}
+
+.selected {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+}
+
+.month-nav button {
+    background-color: skyblue;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.month-nav button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#prev-month, #next-month{
+    font-weight: bold;
+}
+
+.month-nav{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+h3{
+    text-align: center;   
+    margin-top: 60px; 
+}
+
+.select_time{
+    text-align: center;
+}
+
+.record_consultation{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;  
+    width: max-content;    
+}
+
+.record_consultation:hover {
+    background-color: #45a049;
+}

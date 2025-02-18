@@ -1,177 +1,183 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Календарь</title>
+    <title>Календарь консультаций</title>
     <style>
-        .calendar {
-            max-width: 400px;
-            margin: 20px auto;
-            border: 1px solid #ddd;
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
-        .calendar-header {
-            background: #f4f4f4;
-            padding: 10px;
-            font-size: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .calendar-header button {
-            background: #007bff;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .calendar-header button:hover {
-            background: #0056b3;
-        }
-        .calendar-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            background: #f9f9f9;
-        }
-        .day {
-            padding: 10px;
-            border: 1px solid #ddd;
-            cursor: pointer;
-        }
-        .inactive {
-            background: #e9e9e9;
-            color: #bbb;
-            cursor: not-allowed;
-        }
-        .today {
-            background: #ffc107;
-            font-weight: bold;
-        }
-        #time-select {
-            margin: 20px auto;
-            display: block;
-            width: 80%;
-            padding: 10px;
-            font-size: 16px;
-        }
+        <?php require_once "consultation.css"; ?>    
     </style>
 </head>
 <body>
-    <div class="calendar">
-        <div class="calendar-header">
-            <button id="prev-month">←</button>
-            <div id="calendar-header"></div>
-            <button id="next-month">→</button>
+
+    <?php require_once "header.php"; ?>
+
+    <div class="content">
+        <!-- Вывод сообщений -->
+        <?php
+        if (isset($_SESSION["success_message"])) {
+            echo "<div class='success-message'>" . $_SESSION["success_message"] . "</div>";
+            unset($_SESSION["success_message"]);
+        }
+        if (isset($_SESSION["error_message"])) {
+            echo "<div class='error-message'>" . $_SESSION["error_message"] . "</div>";
+            unset($_SESSION["error_message"]);
+        }
+        ?>
+
+        <h3>Выберите дату и время консультации</h3>
+        <div class="calendar">
+            <div class="calendar-header">
+                <button id="prev-month"><<</button>
+                <span id="calendar-header"></span>
+                <button id="next-month">>></button>
+            </div>
+            <div class="calendar-days" id="calendar-days"></div>
         </div>
-        <div class="calendar-days" id="calendar-days"></div>
+
+        <div class="select_time">
+            <label for="time-select">Выберите время:</label>
+            <select id="time-select">
+                <option value="">Выберите время</option>
+            </select>
+        </div>
+
+        <button type="button" class="record_consultation">Записаться на консультацию</button>
     </div>
 
-    <select id="time-select">
-        <option>Выберите дату, чтобы увидеть доступное время</option>
-    </select>
-
     <script>
-        let currentYear, currentMonth;
+        let selectedDate = null;
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+
+        const monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 
         const renderCalendar = () => {
             const daysContainer = document.getElementById('calendar-days');
             const header = document.getElementById('calendar-header');
-            const now = new Date();
-
-            // Если текущий месяц и год не заданы, берем текущие
-            if (currentYear === undefined || currentMonth === undefined) {
-                currentYear = now.getFullYear();
-                currentMonth = now.getMonth();
-            }
-
-            const monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
             header.textContent = `${monthNames[currentMonth]} ${currentYear}`;
 
-            // Определяем первый день месяца и количество дней в месяце
             const firstDay = new Date(currentYear, currentMonth, 1).getDay();
             const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
             const prevDays = (firstDay === 0 ? 6 : firstDay - 1);
 
-            // Очистка контейнера
             daysContainer.innerHTML = '';
 
-            // Добавляем пустые ячейки перед первым днем месяца
+            // Добавляем пустые ячейки
             for (let i = 0; i < prevDays; i++) {
-                daysContainer.innerHTML += '<div class="day inactive"></div>';
+                daysContainer.innerHTML += '<div class="day"></div>';
             }
 
-            // Заполняем дни месяца
-            for (let day = 1; day <= daysInMonth; day++) {
-                const isToday = day === now.getDate() && currentMonth === now.getMonth() && currentYear === now.getFullYear();
-                const isPastDate = new Date(currentYear, currentMonth, day) < now.setHours(0, 0, 0, 0);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const todayDate = today.getDate();
+            const todayMonth = today.getMonth();
+            const todayYear = today.getFullYear();
 
-                daysContainer.innerHTML += `
-                    <div class="day ${isToday ? 'today' : ''} ${isPastDate ? 'inactive' : ''}" 
-                         data-date="${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}">
-                        ${day}
-                    </div>`;
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(currentYear, currentMonth, day);
+                const formattedDate = date.toLocaleDateString('fr-CA');
+                const isToday = day === todayDate && currentMonth === todayMonth && currentYear === todayYear;
+                // Позволяем выбирать сегодня, даже если время уже прошло
+                const isPastDate = (date < today && !isToday);
+                const isSelected = selectedDate && selectedDate === formattedDate;
+                const dayClass = `${isToday ? 'today' : ''} ${isSelected ? 'selected' : ''} ${isPastDate ? 'inactive' : ''}`;
+                daysContainer.innerHTML += `<div class="day ${dayClass}" data-date="${formattedDate}">${day}</div>`;
             }
         };
 
-        // Обработчики переключения месяцев
+        renderCalendar();
+
+        document.getElementById('calendar-days').addEventListener('click', (event) => {
+            if (event.target.classList.contains('day') && !event.target.classList.contains('inactive')) {
+                const newSelectedDate = event.target.dataset.date;
+                if (selectedDate !== newSelectedDate) {
+                    selectedDate = newSelectedDate;
+                    renderCalendar();
+                    loadAvailableTimes(selectedDate);
+                }
+            }
+        });
+
+        const loadAvailableTimes = (selectedDate) => {
+            fetch(`get_sessiontime.php?date=${selectedDate}`)
+                .then(response => response.json())
+                .then(data => {
+                    const timeSelect = document.getElementById('time-select');
+                    timeSelect.innerHTML = ''; // Очищаем предыдущие данные
+                    const defaultOption = document.createElement('option');
+                    defaultOption.value = '';
+                    defaultOption.textContent = 'Выберите время';
+                    timeSelect.appendChild(defaultOption);
+
+                    data.forEach(session => {
+                        const option = document.createElement('option');
+                        option.value = session;
+                        option.textContent = session;
+                        timeSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Ошибка загрузки данных:', error);
+                    alert('Ошибка загрузки данных.');
+                });
+        };
+
         document.getElementById('prev-month').addEventListener('click', () => {
-            currentMonth--;
-            if (currentMonth < 0) {
+            if (currentMonth === 0) {
                 currentMonth = 11;
                 currentYear--;
+            } else {
+                currentMonth--;
             }
             renderCalendar();
         });
 
         document.getElementById('next-month').addEventListener('click', () => {
-            currentMonth++;
-            if (currentMonth > 11) {
+            if (currentMonth === 11) {
                 currentMonth = 0;
                 currentYear++;
+            } else {
+                currentMonth++;
             }
             renderCalendar();
         });
 
-        // Загрузка времени сессий при выборе даты
-        document.getElementById('calendar-days').addEventListener('click', (event) => {
-            if (event.target.classList.contains('day') && !event.target.classList.contains('inactive')) {
-                const selectedDate = event.target.dataset.date;
-                console.log("Выбрана дата:", selectedDate);
-
-                // AJAX-запрос на получение времени сессий
-                fetch(`get_sessiontime.php?date=${selectedDate}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Ошибка загрузки данных');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        const timeSelect = document.getElementById('time-select');
-                        timeSelect.innerHTML = ''; // Очищаем предыдущие значения
-
-                        if (data.length === 0) {
-                            timeSelect.innerHTML = '<option>Нет доступного времени</option>';
-                        } else {
-                            data.forEach(session => {
-                                const option = document.createElement('option');
-                                option.value = session;
-                                option.textContent = session;
-                                timeSelect.appendChild(option);
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Ошибка:', error);
-                        alert('Ошибка загрузки данных. Попробуйте еще раз.');
-                    });
+        // Обработчик нажатия на кнопку "Записаться на консультацию"
+        document.querySelector('.record_consultation').addEventListener('click', () => {
+            if (!selectedDate) {
+                alert("Пожалуйста, выберите дату консультации.");
+                return;
             }
-        });
+            const timeSelect = document.getElementById('time-select');
+            const selectedTime = timeSelect.value;
+            if (!selectedTime) {
+                alert("Пожалуйста, выберите время консультации.");
+                return;
+            }
 
-        // Инициализация календаря
-        renderCalendar();
+            // Формируем данные для отправки
+            const formData = new FormData();
+            formData.append("date", selectedDate);
+            formData.append("time", selectedTime);
+
+            // Отправляем данные методом POST на серверный скрипт record_consultation.php
+            fetch("record_consultation.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                window.location.href = "consultation.php"; // Перенаправляем обратно на страницу
+            })
+            .catch(error => {
+                console.error("Ошибка при записи данных:", error);
+                alert("Ошибка при записи данных.");
+            });
+        });
     </script>
+
 </body>
 </html>
