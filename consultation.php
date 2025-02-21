@@ -8,7 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Календарь консультаций</title>
     <style>
-        <?php require_once "consultation.css"; ?>    
+        <?php require_once "style/consultation.css"; ?>    
     </style>
 </head>
 <body>

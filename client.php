@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
     <title>Client</title>
     <style>
         <?php
-        include "client.css"
+        include "style/client.css"
         ?>
     </style>
 </head>

@@ -9,7 +9,7 @@ session_start();
     <title>Register</title>
     <style>
         <?php
-            include"register.css"
+            include"style/register.css"
         ?>
     </style>
 </head>
