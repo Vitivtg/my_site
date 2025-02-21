@@ -10,13 +10,12 @@ html,body{
     flex-direction: column;
 }
 
-.calendar {
+.calendar {    
     max-width: 400px;
     margin: 20px auto;
-    border: 1px solid #ddd;
+    border: none;
     text-align: center;
-    font-family: Arial, sans-serif;
-    
+    font-family: Arial, sans-serif;    
 }
 
 .calendar-header {
@@ -101,4 +100,26 @@ h3{
 
 .record_consultation:hover {
     background-color: #45a049;
+}
+
+.error {
+    font-size: small;
+    color: red;
+    text-align: center; 
+    width: 100%;
+    padding: 0;
+    background-color:white;
+    border-radius: 5px;    
+    margin-bottom: 10px; /* Отступы между полями */
+    border: 1px solid #ccc; /* Обводка полей */
+    border-radius: 5px; /* Закругленные углы полей */
+    box-sizing: border-box; /* Учитываем padding в ширине */
+    margin-top: 10px;
+}
+
+.success{
+    font-size: medium;
+    color: rgb(7, 192, 7);
+    text-align: center;
+    width: 100%;
 }

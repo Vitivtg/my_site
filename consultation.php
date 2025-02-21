@@ -16,17 +16,8 @@ session_start();
     <?php require_once "header.php"; ?>
 
     <div class="content">
-        <!-- Вывод сообщений -->
-        <?php
-        if (isset($_SESSION["success_message"])) {
-            echo "<div class='success-message'>" . $_SESSION["success_message"] . "</div>";
-            unset($_SESSION["success_message"]);
-        }
-        if (isset($_SESSION["error_message"])) {
-            echo "<div class='error-message'>" . $_SESSION["error_message"] . "</div>";
-            unset($_SESSION["error_message"]);
-        }
-        ?>
+        
+        
 
         <h3>Выберите дату и время консультации</h3>
         <div class="calendar">
@@ -47,6 +38,20 @@ session_start();
 
         <button type="button" class="record_consultation">Записаться на консультацию</button>
     </div>
+
+    <?php
+        if (isset($_SESSION["success_message"])) {
+            echo "<div class='success'>" . $_SESSION["success_message"] . "</div>";
+            unset($_SESSION["success_message"]);
+        }
+        if (isset($_SESSION["error_message"])) {
+            echo "<div class='error'>";
+                        echo "<p>" . htmlspecialchars($_SESSION["error_message"]) . "</p>";
+                        unset($_SESSION["error_message"]);
+                        echo "</div>";            
+            unset($_SESSION["error_message"]);
+        }
+        ?>
 
     <script>
         let selectedDate = null;
@@ -159,18 +164,18 @@ session_start();
                 return;
             }
 
-            // Формируем данные для отправки
+            // данные для отправки
             const formData = new FormData();
             formData.append("date", selectedDate);
             formData.append("time", selectedTime);
 
-            // Отправляем данные методом POST на серверный скрипт record_consultation.php
+            
             fetch("record_consultation.php", {
                 method: "POST",
                 body: formData
             })
             .then(response => {
-                window.location.href = "consultation.php"; // Перенаправляем обратно на страницу
+                window.location.href = "consultation.php"; // Перенаправляем обратно на страницу                
             })
             .catch(error => {
                 console.error("Ошибка при записи данных:", error);

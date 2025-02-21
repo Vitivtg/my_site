@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
     ?>
 
     <h1>Клиент</h1>
-    <div class="clients">
+    <div class="client">
         <table cellspacing="0" cellpadding="10">
             <thead>
                 <tr>
@@ -50,9 +50,10 @@ if (isset($_GET['id'])) {
                     <th>Email</th>
                     <th>Телефон</th>
                     <th>Дата регистрации</th>
+                    <th>Список консультаций</th>
                     <th>Блокировка</th>
                     <th>Действие</th>
-                </tr>
+                </tr><a href=""></a>
             </thead>
             <tbody>
                 <?php
@@ -63,6 +64,7 @@ if (isset($_GET['id'])) {
                             <td>{$client['email']}</td>
                             <td>{$client['phone']}</td>
                             <td>{$client['created_at']}</td>
+                            <td><a href='list_consultation.php?user_id={$client['id']}'>посмотреть</a></td>
                             <td>" . ($client['block'] ? 'Заблокирован' : 'Нет') . "</td>
                             <td>
                                 <form action='update_status.php' method='POST'>
@@ -74,10 +76,9 @@ if (isset($_GET['id'])) {
                     </tr>";
                 ?>
             </tbody>
-        </table>
-        <a class="a1" href="clients.php">назад к списку клиентов</a>
+        </table>        
     </div>
-
+        <a class="a1" href="clients.php">назад к списку клиентов</a>
     <?php
         require_once"footer.php";
     ?>

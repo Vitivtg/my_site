@@ -1,10 +1,4 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%; /* Высота на весь экран */
-}
-
-body {
+body1{
     background-image: url('./image/fon.jpg');
     background-size: cover; /* Растянуть, сохраняя пропорции */
     background-position: center; /* Центрируем картинку */
@@ -14,47 +8,84 @@ body {
     min-height: 100vh;    
 }
 
-.client{
-    display: flex;
-    justify-content:left;
-    align-items: center;
-    gap:10px;
-    grid-row:inherit;
-    border: rgba(37, 44, 39, 0.07);
-    flex: 1;    
-}
-
-.clients table, h1{
-    width: 90%;
-    border-collapse: collapse;
-    margin: 0 auto;
-}
-
-.clients th, .clients td {
-    border: 2px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-.clients th {    
-    font-weight: bold;
-}
-.clients td a{
-    color: rgb(23, 170, 238);
-}
-
-h1{
-    margin-top: 60px;    
+.client{  
+    display: flex;    
+    justify-content:center;
+    align-items: center; 
+    text-align: center;   
+    gap:10px;    
+    border: rgba(37, 44, 39, 0.07);    
 }
 
 .a1{
     margin-top: 20px;
     color:  rgb(7, 106, 152);   
     display: flex;    
-    margin-left: 90px;
+    justify-content: center;
+    text-decoration: none;
 }
 
 button{
-    background-color: rgb(113, 180, 14);
+    background-color: rgb(185, 195, 170);
     border-radius: 5px;
 }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Высота на весь экран */
+    background-color:  rgb(222, 205, 205);    
+}
+
+h1{
+    margin-top: 60px;  
+    text-align: center;  
+}
+
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+    }
+
+    th {
+    background: #252F48;
+    color: white;
+    text-shadow: 0 1px 1px #2D2020;
+    padding: 10px 20px;
+    }
+    th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+    }
+    th:first-child, td:first-child {
+    text-align: left;
+    }
+    th:first-child {
+    border-top-left-radius: 10px;
+    }
+    th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+    }
+    td {
+    padding: 10px 20px;
+    background: #F8E391;
+    }
+    tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+    }
+    tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+    }
+    tr td:last-child {
+    border-right: none;
+    }
+
+    td a{
+        text-decoration: none;
+        }
+

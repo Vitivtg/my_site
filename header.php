@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,14 @@
         <li><a href="">Вебинары</a></li>
         <li><a href="">Тренинги</a></li>
         <li><a href="consultation.php">Консультации</a></li>
+        <li>
+            <?php if (isset($_SESSION["user_id"])): ?>
+                    <!-- Проверяем роль пользователя -->
+                    <?php if (isset($_SESSION["user_role"]) && $_SESSION["user_role"] == 1): ?>
+                        <a href="clients.php">Мои клиенты</a>
+                    <?php endif; ?>
+            <?php endif; ?>
+        </li>
         <li class="last_li">
             <?php if(isset($_SESSION["user_name"])): ?>
                 <p>Привет, <a href=""><?=htmlspecialchars($_SESSION["user_name"]) ?></a></p>

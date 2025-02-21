@@ -4,8 +4,7 @@ require_once "config.php";
 
 // Проверка авторизации пользователя
 if (!isset($_SESSION["user_id"])) {
-    $_SESSION["error_message"] = "Вам нужно войти в систему для записи на консультацию.";
-    session_write_close();
+    $_SESSION["error_message"] = "Вам нужно войти в систему для записи на консультацию.";    
     header("Location: login.php");
     exit;
 }
@@ -69,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($stmt->execute()) {
         if ($stmt->affected_rows > 0) {
-            $_SESSION["success_message"] = "Консультация успешно записана.";
+            $_SESSION["success_message"] = "Консультация успешно записана.";            
         } else {
             $_SESSION["error_message"] = "Запись не была добавлена, проверьте данные.";
         }
@@ -86,3 +85,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     header("Location: consultation.php");
     exit;
 }
+
+?>
