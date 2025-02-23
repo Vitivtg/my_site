@@ -53,6 +53,8 @@ session_start();
         }
         ?>
 
+    <?php require_once "footer.php"; ?>
+
     <script>
         let selectedDate = null;
         let currentMonth = new Date().getMonth();

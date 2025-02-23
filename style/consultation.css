@@ -69,6 +69,8 @@ html,body{
 
 #prev-month, #next-month{
     font-weight: bold;
+    background-color: skyblue;
+    border-style: none;
 }
 
 .month-nav{

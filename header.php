@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="style/header.css">
 </head>
 <body>
     <header>    
@@ -15,11 +15,12 @@
         <li><a href="">Вебинары</a></li>
         <li><a href="">Тренинги</a></li>
         <li><a href="consultation.php">Консультации</a></li>
-        <li>
+        <li class="my_list">
             <?php if (isset($_SESSION["user_id"])): ?>
                     <!-- Проверяем роль пользователя -->
                     <?php if (isset($_SESSION["user_role"]) && $_SESSION["user_role"] == 1): ?>
                         <a href="clients.php">Мои клиенты</a>
+                        <a href="">Список консультаций</a>
                     <?php endif; ?>
             <?php endif; ?>
         </li>
