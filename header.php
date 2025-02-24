@@ -20,7 +20,7 @@
                     <!-- Проверяем роль пользователя -->
                     <?php if (isset($_SESSION["user_role"]) && $_SESSION["user_role"] == 1): ?>
                         <a href="clients.php">Мои клиенты</a>
-                        <a href="">Список консультаций</a>
+                        <a href="list_entries.php">Список консультаций</a>
                     <?php endif; ?>
             <?php endif; ?>
         </li>
