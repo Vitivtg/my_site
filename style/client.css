@@ -48,6 +48,11 @@ table {
     border-radius: 10px;
     border-spacing: 0;
     text-align: center;
+    box-shadow: 
+        -2px -2px 5px rgba(255, 255, 255, 0.8), /* Светлая тень сверху и слева */
+         2px  2px 5px rgba(0, 0, 0, 0.2);       /* Темная тень снизу и справа */
+    border-radius: 10px;
+    border-style: none;
     }
 
     th {

@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit(); // Останавливаем выполнение кода после редиректа
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
