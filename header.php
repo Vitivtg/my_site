@@ -26,7 +26,9 @@
         </li>
         <li class="last_li">
             <?php if(isset($_SESSION["user_name"])): ?>
-                <p>Привет, <a href=""><?=htmlspecialchars($_SESSION["user_name"]) ?></a></p>
+                <p>Привет, <a href="user_page.php?id=<?= $_SESSION['user_id'] ?>">
+    <?= htmlspecialchars($_SESSION["user_name"]) ?>
+</a></p>
                 <a href="logout.php">Выйти</a>
                 <?php else: ?>
                 <a href="login.php">Войти</a>

@@ -64,7 +64,7 @@ $new_order = ($order === 'ASC') ? 'desc' : 'asc';
         <table cellspacing="0" cellpadding="10">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>№</th>
                     <th><a href="?sort=firstname&order=<?php echo $new_order; ?>&search=<?php echo urlencode($search); ?>&search_by=<?php echo $search_by; ?>">Имя</a></th>
                     <th><a href="?sort=lastname&order=<?php echo $new_order; ?>&search=<?php echo urlencode($search); ?>&search_by=<?php echo $search_by; ?>">Фамилия</a></th>
                     <th>Пол</th>

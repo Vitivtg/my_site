@@ -13,9 +13,5 @@ footer{
     background-color: rgb(125, 129, 130);
     justify-content: center;
     align-items: center;
-    margin-top: auto;
-    box-shadow:         
-         3px  3px 5px rgba(0, 0, 0, 0.2);       /* Темная тень снизу и справа */
-    border-radius: 10px;
-    
+    margin-top: auto;    
 }
