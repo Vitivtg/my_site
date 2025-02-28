@@ -94,55 +94,66 @@ if ($show_consultations) {
 
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Профиль пользователя</title>
     <link rel="stylesheet" href="style/user_page.css">
 </head>
+
 <body>
     <?php require_once "header.php"; ?>
 
     <header>
         <h1>Профиль пользователя</h1>
     </header>
-    
+
     <main>
         <?php if (isset($_SESSION["success"])): ?>
-            <p style="color: green;"><strong><?= $_SESSION["success"]; unset($_SESSION["success"]); ?></strong></p>
+            <p style="color: green;"><strong><?= $_SESSION["success"];
+                                                unset($_SESSION["success"]); ?></strong></p>
         <?php endif; ?>
-
-        <p><strong>Имя:</strong> <?= htmlspecialchars($user['firstname']) ?></p>
-        <p><strong>Фамилия:</strong> <?= htmlspecialchars($user['lastname'] ?? 'Не указано') ?></p>
-        <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
-        <p><strong>Пол:</strong> <?= htmlspecialchars($user['gender']) ?></p>
+        <div class="conteiner">
+            <div class="user"><strong>Имя:</strong> </div>
+            <div class="user"><?= htmlspecialchars($user['firstname']) ?></div>
+            <div class="user"><strong>Фамилия:</strong></div>
+            <div class="user"><?= htmlspecialchars($user['lastname'] ?? 'Не указано') ?></div>
+            <div class="user"><strong>Email:</strong></div>
+            <div class="user"><?= htmlspecialchars($user['email']) ?></div>
+            <div class="user"><strong>Пол:</strong></div>
+            <div class="user"><?= htmlspecialchars($user['gender']) ?></div>
+            </div>    
 
         <!-- Форма для редактирования телефона -->
         <form method="POST">
-            <label><strong>Телефон:</strong></label>
-            <input type="text" name="phone" value="<?= htmlspecialchars($user['phone'] ?? '') ?>" required>
+            <div class="phone"><strong >Телефон:</strong></div>
+            <div ><input type="text" name="phone" value="<?= htmlspecialchars($user['phone'] ?? '') ?>" required></div>           
             <button type="submit">Сохранить</button>
-        </form>
+        </form>        
 
         <!-- Форма для смены пароля -->
-        <form class="pass" method="POST">
-            <div><label><strong>Новый пароль:</strong></label></div>
-            <div><input type="password" name="password" required></div>
-            <div><label><strong>Повторите пароль:</strong></label></div>
-            <div><input type="password" name="password_confirm" required></div>
-            <div><button type="submit">Обновить пароль</button></div>            
-
+        <form  method="POST">
+            <div class="pass">
+                <div ><label><strong>Новый пароль:</strong></label></div>
+                <div ><input type="password" name="password" required></div>
+                <div ><label><strong>Повторите пароль:</strong></label></div>
+                <div ><input type="password" name="password_confirm" required></div>
+                </div>
+                <div ><button type="submit">Обновить пароль</button></div>
+            
             <?php if (isset($_SESSION["error_password"])): ?>
-                <p style="color: red;"><strong><?= $_SESSION["error_password"]; unset($_SESSION["error_password"]); ?></strong></p>
+                <p style="color: red;"><strong><?= $_SESSION["error_password"];
+                                                unset($_SESSION["error_password"]); ?></strong></p>
             <?php endif; ?>
-        </form>
+        </form>    
 
         <!-- Ссылка "Мои консультации" -->
-        <p ><a style="text-decoration: none;"href="user_page.php?show=consultations">Мои консультации</a></p>
+        <p><a style="text-decoration: none;" href="user_page.php?show=consultations">Мои консультации</a></p>
 
         <!-- Раздел "Мои консультации" (если пользователь нажал на ссылку) -->
         <?php if ($show_consultations): ?>
-            
+
             <?php if (!empty($records)): ?>
                 <table>
                     <tr>
@@ -167,4 +178,5 @@ if ($show_consultations) {
 
     <?php require_once "footer.php"; ?>
 </body>
+
 </html>

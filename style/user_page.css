@@ -17,8 +17,11 @@ h1{
 
 .pass{    
     margin-top: 10px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки */
+    gap: 10px; /* Расстояние между элементами */
+    max-width: 300px; /* Ограничиваем ширину */
+    margin: 20px auto;
 }
 
 div{
@@ -26,6 +29,7 @@ div{
 }
 
 button{
+    height: 25px;
     background-color: rgb(150, 143, 143);
     cursor: pointer;
     border-style: none;
@@ -89,4 +93,78 @@ table {
 
     td a{
         text-decoration: none;
-        }
+    }
+
+.conteiner{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки */
+    gap: 10px; /* Расстояние между элементами */
+    max-width: 300px; /* Ограничиваем ширину */
+    margin: 20px auto; /* Центрируем */
+}
+
+.user{  
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;    
+    height: 25px;
+    width: 150px;
+    background-color: rgb(111, 113, 114);     
+    box-shadow: 
+        -2px -2px 5px rgba(255, 255, 255, 0.8),
+         2px  2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.pass div{  
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;    
+    height: 25px;
+    width: 150px;
+    background-color: rgb(111, 113, 114);     
+    box-shadow: 
+        -2px -2px 5px rgba(255, 255, 255, 0.8),
+         2px  2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+input{
+    all:unset;
+    
+    height: 25px;
+    width: 150px;
+    background-color: rgb(111, 113, 114);     
+    box-shadow: 
+        -2px -2px 5px rgba(255, 255, 255, 0.8),
+         2px  2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.phone{   
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 25px;
+    width: 150px;
+    background-color: rgb(111, 113, 114);     
+    box-shadow: 
+        -2px -2px 5px rgba(255, 255, 255, 0.8),
+         2px  2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем форму */
+    justify-content: center;
+    gap: 10px;
+}
